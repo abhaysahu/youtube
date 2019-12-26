@@ -1,0 +1,72 @@
+CREATE TABLE "user" (
+	"uuid" varchar(255) NOT NULL,
+	"Name" varchar(255) NOT NULL,
+	"Email" varchar(255) NOT NULL,
+	"Password" varchar(255) NOT NULL,
+	CONSTRAINT "user_pk" PRIMARY KEY ("uuid")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "video" (
+	"uuid" varchar(255) NOT NULL,
+	"video_id" serial NOT NULL,
+	"video_name" varchar(255),
+	"video_desc" varchar(255),
+	"date" DATE NOT NULL,
+	"image_url" varchar(500),
+	"video_url" varchar(500) NOT NULL,
+	CONSTRAINT "video_pk" PRIMARY KEY ("video_id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "comment" (
+	"uuid" varchar(255) NOT NULL,
+	"video_id" bigint NOT NULL,
+	"comment_id" serial NOT NULL,
+	"comment" varchar(5000),
+	CONSTRAINT "comment_pk" PRIMARY KEY ("comment_id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "like" (
+	"uuid" varchar(255) NOT NULL,
+	"video_id" bigint NOT NULL,
+	"like_id" serial NOT NULL,
+	CONSTRAINT "like_pk" PRIMARY KEY ("like_id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "unlike" (
+	"uuid" varchar(255) NOT NULL,
+	"video_id" bigint NOT NULL,
+	"unlike_id" serial NOT NULL,
+	CONSTRAINT "unlike_pk" PRIMARY KEY ("unlike_id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+
+ALTER TABLE "video" ADD CONSTRAINT "video_fk0" FOREIGN KEY ("uuid") REFERENCES "user"("uuid");
+
+ALTER TABLE "comment" ADD CONSTRAINT "comment_fk0" FOREIGN KEY ("uuid") REFERENCES "user"("uuid");
+ALTER TABLE "comment" ADD CONSTRAINT "comment_fk1" FOREIGN KEY ("video_id") REFERENCES "video"("video_id");
+
+ALTER TABLE "like" ADD CONSTRAINT "like_fk0" FOREIGN KEY ("uuid") REFERENCES "user"("uuid");
+ALTER TABLE "like" ADD CONSTRAINT "like_fk1" FOREIGN KEY ("video_id") REFERENCES "video"("video_id");
+
+ALTER TABLE "unlike" ADD CONSTRAINT "unlike_fk0" FOREIGN KEY ("uuid") REFERENCES "user"("uuid");
+ALTER TABLE "unlike" ADD CONSTRAINT "unlike_fk1" FOREIGN KEY ("video_id") REFERENCES "video"("video_id");
