@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-blue">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/images/logo.png" alt="Angular Project" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/" routerLinkActive="Active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/course" routerLinkActive="Active">Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/page/about" routerLinkActive="Active">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Contact" routerLinkActive="Active">Contact Us</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item" *ngIf="!sess" >
+              <a class="nav-link" routerLink="/Login" routerLinkActive="Active">Login</a>
+          </li>
+
+          <li class="nav-item" *ngIf="!sess">
+              <a class="nav-link" routerLink="/Registration" routerLinkActive="Active">Registration</a>
+          </li>
+
+          
+          <li class="nav-item" *ngIf="sess">
+              <a class="nav-link" routerLink="/dashboard" routerLinkActive="Active">Dashboard</a>
+          </li>
+
+          <li class="nav-item" *ngIf="sess">
+              <a class="nav-link"  routerLink="/Login" routerLinkActive="Active">Logout</a>
+          </li>
+        
+    </ul>
+
+    </div>
+  </div>
+</nav>
+                                    

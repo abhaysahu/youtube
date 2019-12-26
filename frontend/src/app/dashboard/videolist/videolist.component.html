@@ -1,0 +1,38 @@
+<app-dashboard></app-dashboard>
+<section class="blog-list mtb-40">
+  <div class="container">
+    <h1>User video plan</h1>
+
+
+    <div class="row">
+        <ng-container *ngFor="let post of allvideo; let i = index">
+            <div class="col-md-4 col-sm-6">
+
+                <div class="blog-box">
+                    <img *ngIf="post.image_url" height="200" width="300" src="{{post.image_url}}" alt="blog1" />
+                    <h3>{{post.video_name}}</h3>
+                    <p>by <span>{{ name }}</span> Date:-{{ post.date | date: 'mediumDate' }} </p>
+                    <p class="claimedCenter"><span maxlength="50">{{ post.video_desc }}</span></p>
+                    <a [routerLink]="['/videoplay', post.video_id]" routerLinkActive="active" class="btn btn-danger">Read more...</a>
+                  </div>
+                
+            </div>
+        </ng-container>
+        
+    </div>
+  </div> 
+
+  <!-- <div class="col-md-4 col-sm-6">
+
+      <div class="blog-box">
+
+          <div class="video" [innerHtml]="thumbnail"></div>
+          
+          <h3>abhay</h3>
+          <p>by <span>abhay</span> abhay</p>
+          <p class="claimedCenter"><span maxlength="50">abhay</span></p>
+          <a [routerLink]="['/videoplay', post.video_id]" routerLinkActive="active" class="btn btn-danger">Read more...</a>
+        </div>
+      
+  </div> -->
+</section> 

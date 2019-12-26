@@ -1,0 +1,41 @@
+<section class="dashboard-wrap mtb-40">
+  <div class="container">
+        <div class="body-content">
+        <div class="row">
+            <app-dashboard></app-dashboard>
+                <div class="col-md-12">
+                    <div class="dash-right">
+                      <div class="dash-header">
+                          <div class="dash-title">
+                              <h1>Posts</h1>
+                          </div>
+                          <div class="dash-nav">
+                              <a [routerLink]="['/add/video']" class="btn btn-success">Add Video</a>
+                          </div>
+                        </div>
+                        <table class="table table-bordered table-striped">
+                          <tr>
+                              <th>#ID</th>
+                              <th>Image</th>
+                              <th>Title</th>
+                              <th>Created At</th>
+                              <th>Action</th>
+                          </tr>
+                          <tr *ngFor="let post of allvideo">
+                              <td>{{post.video_id}}</td>
+                              <td><img *ngIf="post.image_url" src="{{post.image_url}}" ></td>
+                              <td>{{post.video_name}}</td>
+                              <td>{{post.date | date: 'mediumDate'}}</td>
+                              <td class="action">
+                                  <a [routerLink]="['/admin/videoPost/edit', post.video_id]" class="btn btn-info btn-sm">Edit</a>
+                                  <a (click)="onDelete(post.video_id)" class="btn btn-danger btn-sm">Delete</a>
+                              </td>
+                          </tr>
+                        </table>
+                        {{error}}
+                    </div>   
+                </div>
+        </div>
+        </div>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+
+<section class="Singup-wrap mtb-40">
+  <div class="container">
+      <app-dashboard></app-dashboard>
+      <div class="row justify-content-center" *ngIf="!error">
+        <div class="col-md-9">
+            <div class="login-box">
+                <h1>Post Video</h1>
+                <div class="alert alert-success" *ngIf="datasaved">
+                   {{massage}}
+                </div>
+                <form (ngSubmit)="onSubmit(regForm)" [formGroup]="regForm">
+                    
+                    <div class="form-group form-row">
+                        <label for="video_name" class="col-md-3">Video Name : <span class="required">*</span></label>
+                        <div class="col-md-9">
+                          <div *ngIf="video">
+                            <input [(ngModel)]="video.video_name" type="text" formControlName="video_name" class="form-control" placeholder="Video short name" required>
+                          </div>
+                          <input *ngIf="!video"  type="text" formControlName="video_name" class="form-control" placeholder="Video short name" required>
+                          <span *ngIf="!regForm.get('video_name').valid && regForm.get('video_name').touched">Please enter Name (Short ame) !!!</span>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="form-group form-row">
+                      <label for="image_url" class="col-md-3">Video Image URL : <span class="required">*</span></label>
+                      <div class="col-md-9">
+                        <div *ngIf="video">
+                            <input [(ngModel)]="video.image_url" type="text" formControlName="image_url" class="form-control" placeholder="Video Image URL" required>  
+                        </div>
+                        <input *ngIf="!video" type="text" formControlName="image_url" class="form-control" placeholder="Video Image URL" required>
+                        <span *ngIf="!regForm.get('image_url').valid && regForm.get('image_url').touched">Please enter Video Image URL !!!</span>
+                      </div>
+                    </div> -->
+              
+
+                    
+                    <div class="form-group form-row">
+                      <label for="video_url" class="col-md-3">Video Link URL : <span class="required">*</span></label>
+                      <div class="col-md-9">
+                        <div *ngIf="video">
+                          <input [(ngModel)]="video.video_url" type="text" formControlName="video_url" class="form-control" placeholder="Video Link URL" required>
+                        </div>
+                        <input *ngIf="!video" type="text" formControlName="video_url" class="form-control" placeholder="Video Link URL" required>
+                        <span *ngIf="!regForm.get('video_url').valid && regForm.get('video_url').touched">Please enter Video Link !!!</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group form-row">
+                      <label for="video_desc" class="col-md-3">Video Description : <span class="required">*</span></label>
+                      <div class="col-md-9">
+                        <div *ngIf="video">
+                          <textarea [(ngModel)]="video.video_desc" type="text" formControlName="video_desc" class="form-control" rows="8" cols="80" placeholder="Video full description" required></textarea>
+                        </div>
+                        <textarea *ngIf="!video" type="text" formControlName="video_desc" class="form-control" rows="8" cols="80" placeholder="Video full description" required></textarea>
+                        <span *ngIf="!regForm.get('video_desc').valid && regForm.get('video_desc').touched">Please enter video Description !!!</span>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" [disabled]="!regForm.valid" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>         
+        </div>
+      </div>
+     
+  </div>
+</section>
+
+
+
+<!-- <div [innerHtml]="iframe_html"></div> -->
